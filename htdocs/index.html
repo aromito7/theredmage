@@ -1,0 +1,48 @@
+<!doctype html>
+<html ng-app="app"> <!-- style="background-image: url('img/redBackground.jpg')"-->
+  <head>
+    <title>The Red Domain</title>
+    
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
+    <link rel="shortcut icon" href="img/redBobombIcon.ico"/>
+    <link href="css/main.css" rel="stylesheet"/>
+
+    <!-- Include the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/shared/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <!-- Actual header beings here     -->
+
+  </head>
+  <body>
+    <div class="navigation">
+        <ul >
+            <li ng-class="{ active: isActive('/#/')}"><a href="/#/">Home</a></li>
+            <li ng-class="{ active: isActive('/#/Red')}"><a href="/#/Red">Red</a></li>
+            <li ng-class="{ active: isActive('/#/Professional')}"><a href="/#/Professional">Professional</a></li>
+            <li ng-class="{ active: isActive('/#/TopSevens')}"><a href="/#/TopSevens">Top 7</a></li>
+            <li ng-class="{ active: isActive('/#/About')}" style="float:right;margin-right:20px"><a href="/#/About">About</a></li>
+        </ul>
+    </div>
+    <!-- <a href="connect.php">PHP</a> -->
+    <div class="main" ng-controller="mainController">
+      <div ng-view>
+      </div>
+      <!--  This DIV loads templates depending upon route -->
+    </div>
+
+    
+
+
+    <!-- Modules -->
+    <script src="/js/app.js"></script>
+    <!-- Controllers -->
+    <script src="/js/controllers/mainController.js"></script>
+
+    <!-- Directives -->
+    <script src="js/directives/appInfo.js"></script>
+    <script src="js/directives/topSevens.js"></script>
+
+
+  </body>
+</html>

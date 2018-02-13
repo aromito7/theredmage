@@ -1,0 +1,195 @@
+html, body {
+    background-size: cover;
+    margin:0;
+    padding:0;
+}
+
+body {
+   font-family: Arial, serif;
+}
+
+div[class=rounded]{
+  border-style: solid;
+  border-radius: 25px;
+  border-color: #600;
+  margin-top:10px;
+  margin-right:10px;
+  margin-left: 250px;
+}
+
+.main {
+}
+.container{
+    width: 1100px;
+    height: 600px;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+
+.header h1 {
+   color: #000;
+   font-size: 30px;
+   font-weight: bold;
+   text-transform: lowercase;
+}
+
+.card {
+    display: inline-block;
+}
+
+
+.title {
+   color: #000;
+   font-size: 15px;
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
+.btn {
+   background: transparent;
+   color: #000;
+   border: 1px solid #000;
+   font-size: 24px;
+   font-weight: 200;
+   padding:2px 10px;
+   border-radius: 2px;
+}
+
+.btn:hover {
+   color: rgb(255,80,80);
+   background: rgba(255,80,80,0.25);
+   transition: background 500ms;
+   border: 1px solid rgb(255,80,80);
+}
+
+.rating {
+ text-align: right;
+ -webkit-user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+}
+
+.likes,
+.dislikes {
+    background: #FF2A1A ;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 40px;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 200;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: background 500ms;
+}
+
+.likes:hover,
+.dislikes:hover {
+ color: #FF2A1A ;
+   background: rgba(255,255,255, 1);
+   transition: background 500ms;
+}
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+	transform-style: preserve-3d;
+}
+	/*  UPDATED! flip the pane when hovered */
+	.flip-container:hover .back {
+		transform: rotateY(0deg);
+	}
+	.flip-container:hover .front {
+	    transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/*  UPDATED! front pane, placed above back */
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(-180deg);
+  vertical-align: middle;
+}
+
+.back p{
+    border-radius: 25px;
+    background-color: #600;
+    color:  white;
+    text-align: center;
+    top:50%;
+    transform: translate(0, 240px);
+    font-size:40px;
+
+}
+
+.front img{
+  border-radius: 20px;
+}
+/* this is for the navigation bar */
+
+.todo{
+  margin:auto;
+    font-size: 80px;
+    background-color:#600;
+    color: white;
+    width: 300px;
+    text-align:center;
+  border-radius:25px
+}
+
+.navigation {
+    margin: 0 0 0 0;
+}
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #600;
+}
+
+.navigation li {
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navigation li a:hover {
+    background-color: #000;
+}

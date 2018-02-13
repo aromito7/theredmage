@@ -1,0 +1,12 @@
+<a href="{{ info.link }}">
+    <div class="flip-container" style="width:300px;height:600px" ontouchstart="this.classList.toggle('hover');">
+        <div class="flipper">
+            <div class="front" style="width:300px;height:600px;">
+                <img class="icon" ng-src="{{ info.icon }}">
+            </div>
+            <div class="back" style="width:300px;height:600px;">
+                <p>{{ info.title }}</p>
+            </div>
+        </div>
+    </div>
+</a>

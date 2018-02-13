@@ -1,0 +1,14 @@
+<div class="rating" style="float:left;position:relative;transform: translate(50%, 15px)">
+        <p class="likes" ng-click="item.likes = item.likes + 1" href=""  style="float: top">+{{ item.likes }}</p>
+    <p class="dislikes" ng-click="item.dislikes = item.dislikes + 1">- {{ item.dislikes }}</p>
+</div>
+<div class="" style="overflow:hidden;border-radius:25px;border:2px solid #73AD21;padding:0px">
+    <div style="width:350px;float:left;margin: 0 50px 0 50px;">
+        <p class="index" style="font-size:24px">#{{ $index + 1}}</p>
+        <p class="title" style="text-align:center;font-size:16px">{{ item.title | uppercase }}</p>
+        <p class="year" style="text-align:right">{{ item.year }}</p>
+    </div>
+    <div style="overflow:hidden;width:600px;height:150px;float:right;border-radius:10px;">
+        <img ng-src="{{ item.icon }}" style="width: 600px; height:150px;">
+    </div>
+</div>
