@@ -16,6 +16,10 @@ div[class=rounded]{
   margin-right:10px;
   margin-left: 250px;
 }
+div[class=rounded] p, h1{
+  margin-left:25px;
+  margin-right:5px;
+}
 
 .main {
 }
@@ -90,6 +94,11 @@ div[class=rounded]{
  color: #FF2A1A ;
    background: rgba(255,255,255, 1);
    transition: background 500ms;
+}
+
+.horizontal-flip, .horizontal-flip div{
+  width: 600px;
+  height: 120px;
 }
 
 /* entire container, keeps perspective */

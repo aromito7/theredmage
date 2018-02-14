@@ -5,12 +5,10 @@
 	</div>
 	<div class="rounded">
 	    <h1>About Me:</h1>
-	    <p>My name is Alexander Joseph Romito, and I'm passionate about math, programming, running, and games of strategy, such as poker.</p>
+	    <p>My name is Alexander Joseph Romito, and I'm passionate about math, programming, running, and games of strategy such as poker.</p>
 	    <br>	
 	</div>
 </div>
-<div class="container">
-    <div class="card" ng-repeat="interest in interests">
-        <app-info info="interest"></app-info>
-    </div>
+<div class="horizontal-flip" ng-repeat="interest in interests">
+    <app-info info="interest"></app-info>
 </div>
