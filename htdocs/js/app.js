@@ -41,7 +41,14 @@ app.config(function($routeProvider){
             templateUrl: 'pages/todo.html',
             controller: 'mainController'
         })
-		.otherwise({ redirectTo: 'pages/home.html' })
+        .when('/TODO',{
+            templateUrl: 'pages/todo.html',
+            controller: 'mainController'
+        })
+		.otherwise({ 
+            redirectTo: '/TODO' ,
+            controller: 'mainController'
+        })
     ;
 });
 

@@ -96,9 +96,19 @@ div[class=rounded] p, h1{
    transition: background 500ms;
 }
 
-.horizontal-flip, .horizontal-flip div{
+.horizontal-flip, .horizontal-flip div, .horizontal-flip img{
   width: 600px;
   height: 120px;
+}
+
+.vertical-flip, .vertical-flip div, .vertical-flip img{
+  width: 300px;
+  height: 600px;
+}
+
+.vertical-flip .back{
+  position: absolute;
+  top: 36%;
 }
 
 /* entire container, keeps perspective */
@@ -154,7 +164,6 @@ div[class=rounded] p, h1{
     color:  white;
     text-align: center;
     top:50%;
-    transform: translate(0, 240px);
     font-size:40px;
 
 }
@@ -171,7 +180,7 @@ div[class=rounded] p, h1{
     color: white;
     width: 300px;
     text-align:center;
-  border-radius:25px
+    border-radius:25px;
 }
 
 .navigation {
