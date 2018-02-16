@@ -5,22 +5,15 @@ app.controller('mainController', ['$scope', function($scope) {
         title: 'About Me',
         link: '/#/About'
     },
-    /*
     {
-        icon: 'img/redElemental.jpg',
-        title: 'About Red',
-        link: '/#/Red'
-    },
-    */
-    {
-        icon: 'img/schala.jpg',
+        icon: 'img/top7.gif',
         title: 'Top Sevens',
         link: '/#/TopSevens'
     },
     {
-        icon: 'img/business.jpg',
-        title: 'Professional',
-        link: '/#/Professional'
+        icon: 'img/redElemental.jpg',
+        title: 'About Red',
+        link: '/#/Red'
     }
     ];
     
@@ -32,10 +25,19 @@ app.controller('mainController', ['$scope', function($scope) {
     },
     {
         icon: 'img/code.jpg',
-        title: 'Code',
-        link: '/#/About/Code',
+        title: 'Programming',
+        link: '/#/About/Programming',
+    },
+    {
+        icon: 'img/poker.png',
+        title: 'Poker',
+        link: '/#/About/Poker'
+    },
+    {
+        icon: 'img/running.jpg',
+        title: 'Running',
+        link: '/#/About/Running'
     }
-
     ]
 
     $scope.topSevens = [
@@ -259,5 +261,7 @@ app.controller('mainController', ['$scope', function($scope) {
         },
 
     ];
-    
+    $scope.$back = function(){
+        window.history.back();
+    };
 }]);

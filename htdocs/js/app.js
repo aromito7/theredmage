@@ -14,7 +14,7 @@ app.config(function($routeProvider){
 			controller: 'mainController'
 		})
         .when('/Red',{
-            templateUrl: 'pages/red.html',
+            templateUrl: 'pages/todo.html',  //pages/red.html
             controller: 'mainController'
         })        
         .when('/Professional',{
@@ -40,7 +40,11 @@ app.config(function($routeProvider){
         .when('/TopSevens/Music',{
             templateUrl: 'pages/todo.html',
             controller: 'mainController'
-        })
+        })        
+        .when('/About/Programming',{
+            templateUrl: 'pages/programming.html',
+            controller: 'mainController'
+        })        
         .when('/TODO',{
             templateUrl: 'pages/todo.html',
             controller: 'mainController'

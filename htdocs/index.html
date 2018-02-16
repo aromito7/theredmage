@@ -1,7 +1,7 @@
 <!doctype html>
 <html ng-app="app"> <!-- style="background-image: url('img/redBackground.jpg')"-->
   <head>
-    <title>The Red Domain</title>
+    <title>The Red Mage</title>
     
     <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
     <link rel="shortcut icon" href="img/redBobombIcon.ico"/>
@@ -14,23 +14,23 @@
     <!-- Actual header beings here     -->
 
   </head>
-  <body>
     <div class="navigation">
-        <ul >
+        <ul>
             <li ng-class="{ active: isActive('/#/')}"><a href="/#/">Home</a></li>
-            <li ng-class="{ active: isActive('/#/Red')}"><a href="/#/Red">Red</a></li>
-            <li ng-class="{ active: isActive('/#/Professional')}"><a href="/#/Professional">Professional</a></li>
-            <li ng-class="{ active: isActive('/#/TopSevens')}"><a href="/#/TopSevens">Top 7</a></li>
-            <li ng-class="{ active: isActive('/#/About')}" style="float:right;margin-right:20px"><a href="/#/About">About</a></li>
+            <li ng-class="{ active: isActive('/#/About')}"><a href="/#/About">About Me</a></li>
+            <li ng-class="{ active: isActive('/#/TopSevens')}"><a href="/#/TopSevens">TopSevens</a></li>
+            <li ng-class="{ active: isActive('/#/Red')}"><a href="/#/Red">The Red Mage</a></li>
+            <!--<li ng-class="{ active: isActive('/#/About')}" style="float:right;margin-right:20px"><a ng-click="$back()">Return</a></li>-->
         </ul>
     </div>
+  <body>
     <!-- <a href="connect.php">PHP</a> -->
     <div class="main" ng-controller="mainController">
       <div ng-view>
       </div>
       <!--  This DIV loads templates depending upon route -->
     </div>
-
+  </body>
     
 
 
@@ -43,6 +43,4 @@
     <script src="js/directives/appInfo.js"></script>
     <script src="js/directives/topSevens.js"></script>
 
-
-  </body>
 </html>
