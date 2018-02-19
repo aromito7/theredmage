@@ -1,7 +1,9 @@
 <div style="display: inline-block;">
-	<div style="float:left;position: relative;" height="212" width="212">
-		<img src="img/redTriangle.jpg" height="212" width="212" style="position:relative"></img>
-		<img src="img/me2.jpg" height="200" width="200" style="position: absolute; top: 0px; left: 0px;border:#600 6px solid;border-radius:50%;">
+	<div class="ibl" style="position: relative; width:20%;">
+			<!--<img src="img/redTriangle.jpg" height="200" width="200" style="position:relative"></img>-->
+			<div id="triangle-topleft"></div>
+			<div style=" height: 200px;width: 200px;background-color: #555;border-radius: 50%;background-color:#600;position:absolute; top:0px; left0px"></div>
+			<img src="img/me2.jpg" height="188" width="188" style="position: absolute; top: 6px; left: 6px;border-radius:50%;">
 	</div>
 	<div class="rounded">
 	    <h1>About Me:</h1>
@@ -9,6 +11,7 @@
 	    <br>	
 	</div>
 </div>
+<br>
 <div class="grid">
 	<div class="horizontal-flip" ng-repeat="interest in interests">
 		<app-info info="interest"></app-info>

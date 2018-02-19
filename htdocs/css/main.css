@@ -17,7 +17,7 @@ div[class=rounded]{
   margin-right:10px;
   margin-left: 250px;
 }
-div[class=rounded] p, h1{
+div[class=rounded] p{
   margin-left:25px;
   margin-right:5px;
 }
@@ -218,6 +218,27 @@ div[class=rounded] p, h1{
     background-color: #000;
 }
 
+
+.link{
+  background-color: #600;
+  border-radius: 25px;
+}
+
+.link:hover{
+  background-color: #000;
+  cursor: pointer;
+}
+
+.return{
+  margin: auto;
+  text-align: center;
+}
+
+.return:hover{
+  background-color: #000;
+  cursor: pointer;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -226,31 +247,49 @@ div[class=rounded] p, h1{
   margin-left: 25px;
 }
 
-.todo {
-  margin:auto;
-  margin-top: 25px;
-  background-color:#600;
+.ibl {
+  display:inline-block;
+  float: left;
+}
+
+.ibr {
+  display:inline-block;
+  float: right;
+}
+
+#triangle-topleft{
+  width: 0;
+  height: 0;
+  border-top: 200px solid #600;
+  border-right: 200px solid transparent;
+}
+
+.round{
+  border-radius: 25px;
+  background-color: #600;
   color: white;
-  width: 600px;
-  text-align:center;
-  border-radius:25px;
+  font-size:20;
+  padding: 0 1% 0 1%;
+  margin: 10px;
+  text-decoration: none;
 }
 
-.todo h{
-  font-size: 80px;
+h1{
+  font-family:serif;
+  font-weight:100;
+  font-size: 60px
 }
 
-.todo li{
-  text-align: left; 
-  font-size: 40px;
-  margin-left: 25px
+h2{
+  font-size:40px;
 }
 
-.todo a{
-  font-size: 40px
+p, li{
+  font-size: 24px;
+  border
 }
 
-div.todo.navigation:hover{
-    background-color: #000;
-    cursor: pointer;
+a{
+  font-size:24px;
 }
+
