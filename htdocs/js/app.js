@@ -44,7 +44,11 @@ app.config(function($routeProvider){
         .when('/About/Programming',{
             templateUrl: 'pages/programming.html',
             controller: 'mainController'
-        })        
+        })
+        .when('/About/Programming/ProjectEuler',{
+            templateUrl: 'pages/projectEuler.html',
+            controller: 'mainController'
+        })
         .when('/TODO',{
             templateUrl: 'pages/todo.html',
             controller: 'mainController'

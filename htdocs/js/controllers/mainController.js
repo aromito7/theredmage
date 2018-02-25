@@ -12,7 +12,7 @@ app.controller('mainController', ['$scope', function($scope) {
     },
     {
         icon: 'img/redElemental.jpg',
-        title: 'About Red',
+        title: 'The Red Mage',
         link: '/#/Red'
     }
     ];

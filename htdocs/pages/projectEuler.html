@@ -1,0 +1,40 @@
+<div style="display: inline-block;">
+	<div class="ibl" style="position: relative; width:20%;">
+			<!--<img src="img/redTriangle.jpg" height="200" width="200" style="position:relative"></img>-->
+			<div id="triangle-topleft"></div>
+			<div style=" height: 200px;width: 200px;background-color: #555;border-radius: 50%;background-color:#600;position:absolute; top:0px; left0px"></div>
+			<img src="img/me2.jpg" height="188" width="188" style="position: absolute; top: 6px; left: 6px;border-radius:50%;">
+	</div>
+	<div class="ibl" style="width:80%;">
+		<div>
+			<h1 style="margin:0;margin:0;padding:0;">Project Euler<h1>
+			<h2 class="round" style="text-align:center;width:300px;">Problem 051</h2>
+			<!--<p class="round">ProjectEuler.net has, to date, 610 increasingly difficult problems that require programming and math to solve.  All of the early problems had solutions that were obvious to me, and the struggle was entirely with the implementation.  Problem 51 was the first one that I couldn't immediately start coding, and I actually had to pause and think for a few minutes about the best way to solve it.  That's the reason why I found it to be interesting enough to talk about, and this is the process of how I went about solving it.
+			</p>-->
+			<div class = "round">
+				<p>By replacing the 1st digit of the 2-digit number *3, it turns out that six of the nine possible values: 13, 23, 43, 53, 73, and 83, are all prime.
+				</p>
+				<p>By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit number is the first example having seven primes among the ten generated numbers, yielding the family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Consequently 56003, being the first member of this family, is the smallest prime with this property.
+				</p>
+				<p>Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+	<h2 class = "round">The first attempt</h2>
+	<div class = "round">
+		<p>My first instinct was to initialize an array full of zeros with the NumPy to count all of the number families that use '*' in them.  I would iterate through all numbers below 1 million checking to see if they are prime.  If they are prime, I increase the count for all possible families they could belong to. 
+		</p>
+		<p>
+		Take 56003 for example, after confirming that it's prime, we can count it in any number of prime families that can be created by substiting any subset of digits with the same value with a *.  We generate these families by replacing 5, 6, 3, or any combination of 0s to find it belongs to six families: 5600*, 5*003, *6003, 56**3, 560*3, 56*03.  We would then increase the count of each of the corresponding values in our array.  Each dimension of the array would have size 11 where 0 to 9 represent themselves in the array and 10 represents the *.  To increase the count for 56**3 the code would look something like "array[5][6][10][10][3]+=1".
+		</p>
+		<p>
+		However, simply creating an array of size 11x11x11x11x11x11 for six digits required more than a few seconds for my computer to do, and I decided that working with a sparse array of this size was not an efficient way to go about solving the problem.
+		</p>
+	</div>	
+</div>
+<div>
+	<h2 class = "round">The second attempt</h2>
+</div>
