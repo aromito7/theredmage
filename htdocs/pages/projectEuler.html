@@ -23,12 +23,12 @@
 	</div>
 </div>
 <div>
-	<h2 class = "round">The first attempt</h2>
+	<h2 class = "round" style="display:inline-block">The first attempt</h2>
 	<div class = "round">
 		<p>My first instinct was to initialize an array full of zeros with the NumPy to count all of the number families that use '*' in them.  I would iterate through all numbers below 1 million checking to see if they are prime.  If they are prime, I increase the count for all possible families they could belong to. 
 		</p>
 		<p>
-		Take 56003 for example, after confirming that it's prime, we can count it in any number of prime families that can be created by substiting any subset of digits with the same value with a *.  We generate these families by replacing 5, 6, 3, or any combination of 0s to find it belongs to six families: 5600*, 5*003, *6003, 56**3, 560*3, 56*03.  We would then increase the count of each of the corresponding values in our array.  Each dimension of the array would have size 11 where 0 to 9 represent themselves in the array and 10 represents the *.  To increase the count for 56**3 the code would look something like "array[5][6][10][10][3]+=1".
+		Take 56003 for example, after confirming that it's prime, we can count it in any number of prime families that it is part of by substiting any non-zero subset of digits with a single value value with a *.  We generate these families by replacing 5, 6, 3, or any combination of 0s to find it belongs to six families: 5600*, 5*003, *6003, 56**3, 560*3, 56*03.  We would then increase the count of each of the corresponding values in our array.  Each dimension of the array would have size 11 where 0 to 9 represent themselves in the array and 10 represents the *.  To increase the count for family 56**3 the code would look something like "nparray[5][6][10][10][3]+=1".
 		</p>
 		<p>
 		However, simply creating an array of size 11x11x11x11x11x11 for six digits required more than a few seconds for my computer to do, and I decided that working with a sparse array of this size was not an efficient way to go about solving the problem.
@@ -36,5 +36,9 @@
 	</div>	
 </div>
 <div>
-	<h2 class = "round">The second attempt</h2>
+	<h2 class = "round" style="display:inline-block">The second attempt</h2>
+	<div class = "round">
+		<p>My second idea was to generate the families and count the number of primes they contain.  
+		</p>
+	</div>
 </div>
