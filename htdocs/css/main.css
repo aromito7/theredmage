@@ -4,9 +4,28 @@ html, body {
     padding:0;
 }
 
+
+.content
+{
+    overflow-y:scroll;        
+}
 body {
    font-family: Arial, serif;
    font-size: 32px;
+}
+
+.left{
+  width: 20%;
+  display:inline-block;
+  float:left;
+  height: 100%;
+}
+
+.right{
+  width: 20%;
+  display:inline-block;
+  float:right;
+  height: 100%;
 }
 
 .main {
@@ -178,7 +197,9 @@ body {
 
 .navigation {
     margin: 0 0 0 0;
+    font-family:-webkit-body;
 }
+
 .navigation ul {
     list-style-type: none;
     margin: 0;
@@ -203,6 +224,10 @@ body {
 /* Change the link color to #111 (black) on hover */
 .navigation li a:hover {
     background-color: #000;
+}
+
+a :hover{
+  background-color: #000;
 }
 
 
@@ -264,6 +289,17 @@ body {
   text-decoration: none;
 }
 
+.text{
+  border-radius: 25px;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  font-size:20;
+  padding: 0 1% 0 1%;
+  margin: 10px;
+  text-decoration: none;
+}
+
 h1{
   font-family:serif;
   font-weight:100;
@@ -282,3 +318,10 @@ a{
   font-size:24px;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}

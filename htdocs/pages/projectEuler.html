@@ -1,17 +1,19 @@
-<div style="display: inline-block;">
-	<div class="ibl" style="position: relative; width:20%;">
+<div class="left" style="display: inline-block;">
+	<div class="ibl left" style="position: relative; width:20%;">
 			<!--<img src="img/redTriangle.jpg" height="200" width="200" style="position:relative"></img>-->
 			<div id="triangle-topleft"></div>
 			<div style=" height: 200px;width: 200px;background-color: #555;border-radius: 50%;background-color:#600;position:absolute; top:0px; left0px"></div>
 			<img src="img/me2.jpg" height="188" width="188" style="position: absolute; top: 6px; left: 6px;border-radius:50%;">
 	</div>
+</div>
+<div>
 	<div class="ibl" style="width:80%;">
 		<div>
 			<h1 style="margin:0;margin:0;padding:0;">Project Euler<h1>
-			<h2 class="round" style="text-align:center;width:300px;">Problem 051</h2>
+			<h2 class="round" style="display:inline-block">Problem 051</h2>
 			<!--<p class="round">ProjectEuler.net has, to date, 610 increasingly difficult problems that require programming and math to solve.  All of the early problems had solutions that were obvious to me, and the struggle was entirely with the implementation.  Problem 51 was the first one that I couldn't immediately start coding, and I actually had to pause and think for a few minutes about the best way to solve it.  That's the reason why I found it to be interesting enough to talk about, and this is the process of how I went about solving it.
 			</p>-->
-			<div class = "round">
+			<div class = "text">
 				<p>By replacing the 1st digit of the 2-digit number *3, it turns out that six of the nine possible values: 13, 23, 43, 53, 73, and 83, are all prime.
 				</p>
 				<p>By replacing the 3rd and 4th digits of 56**3 with the same digit, this 5-digit number is the first example having seven primes among the ten generated numbers, yielding the family: 56003, 56113, 56333, 56443, 56663, 56773, and 56993. Consequently 56003, being the first member of this family, is the smallest prime with this property.
@@ -21,24 +23,21 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div>
-	<h2 class = "round" style="display:inline-block">The first attempt</h2>
-	<div class = "round">
-		<p>My first instinct was to initialize an array full of zeros with the NumPy to count all of the number families that use '*' in them.  I would iterate through all numbers below 1 million checking to see if they are prime.  If they are prime, I increase the count for all possible families they could belong to. 
-		</p>
-		<p>
-		Take 56003 for example, after confirming that it's prime, we can count it in any number of prime families that it is part of by substiting any non-zero subset of digits with a single value value with a *.  We generate these families by replacing 5, 6, 3, or any combination of 0s to find it belongs to six families: 5600*, 5*003, *6003, 56**3, 560*3, 56*03.  We would then increase the count of each of the corresponding values in our array.  Each dimension of the array would have size 11 where 0 to 9 represent themselves in the array and 10 represents the *.  To increase the count for family 56**3 the code would look something like "nparray[5][6][10][10][3]+=1".
-		</p>
-		<p>
-		However, simply creating an array of size 11x11x11x11x11x11 for six digits required more than a few seconds for my computer to do, and I decided that working with a sparse array of this size was not an efficient way to go about solving the problem.
-		</p>
-	</div>	
-</div>
-<div>
-	<h2 class = "round" style="display:inline-block">The second attempt</h2>
-	<div class = "round">
-		<p>My second idea was to generate the families and count the number of primes they contain.  
-		</p>
+	<div>
+		<h2 class = "round" style="display:inline-block">Possible Options</h2>
+		<div class = "text">
+			<p>One of the reason's I wanted to write something about this problem is that I had to consider 3 reasonable ways to implement a solution and the problem had just enough complexity that stopping to think about it was more prudent than jumping immediately into the code.
+			</p>
+			<li>Solution #1) Iterate through all numbers, check if prime, calculate size of all families containing the prime until a size 8 is found.  This method is the most obvious and likely the easiest to code, it will do lots of redundant prime checks, and it will use some tricky logic to generate families from the primes.</li>
+			<li>Solution #2) Generate primes under 1 million, increment a count for families they correspond to, search families in numerical order until a size 8 is found.  This method will genearte all the primes at once which is faster than doing so seperately, it does no redundant primes checks, it will use a very large and sparse array with dimensions 11 x 11 x 11 x 11 x 11 x 11, it will also use tricky logic to generate families from the primes, and it will perform lots of prime checks on numbers above our solution.</li>
+			<li>Solution #3) Generate all prime families in numerical order, and stop when a size 8 is found.  This method will still perform redundant prime checks, but avoids the tricky logic of generating families from a prime.</li>
+			<p>The last thing I realized was that any family with 8 primes must have at least three wildcards '*' in it.  This follows from the fact that you can tell if a number is divisible by 3 if the sum of it's digits is divisible by three.  Therefore, if you have one wildcard '*' in your family then you can only have a maximum of 6 or 7 primes in it since any 10 consecutive numbers must have either 3 or 4 multiples of three.  This same logic holds true for any number of wildcards '*' that isn't a multiple of 3.  Therefore, we can skip over any families that has less than 3 wildcards '*', and algorithms that calculate the families first can best take advantage of this.  Solutions 1 and 2 both generate the prime numbers first and families second, but Solution 3 generates families first and prime numbers second which was my main deciding factor in using it.</p>
+		</div>
+	</div>
+	<div>
+		<h2 class = "round" style="display:inline-block">Solution 3</h2>
+		<div class = "round">
+			<img src="img/projectEuler_051.bmp" width="100%" style="margin:0;border:0;padding:0;">
+		</div>
 	</div>
 </div>
