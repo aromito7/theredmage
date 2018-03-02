@@ -7,11 +7,12 @@ html, body {
 
 .content
 {
-    overflow-y:scroll;        
+       
 }
 body {
    font-family: Arial, serif;
    font-size: 32px;
+   height: 100%;
 }
 
 .left{
@@ -226,7 +227,7 @@ body {
     background-color: #000;
 }
 
-a :hover{
+a .navigation:hover{
   background-color: #000;
 }
 

@@ -6,11 +6,17 @@
 			<img src="img/me2.jpg" height="188" width="188" style="position: absolute; top: 6px; left: 6px;border-radius:50%;">
 	</div>
 </div>
-<div>
+<div style="margin: 0 50px 0 50px;">
 	<div class="ibl" style="width:80%;">
 		<div>
-			<h1 style="margin:0;margin:0;padding:0;">Project Euler<h1>
-			<h2 class="round" style="display:inline-block">Problem 051</h2>
+			<h1 style="display:inline-block;">Programming</h1>
+			<h1 style="display:inline-block;text-decoration: line-through;">Blog</h1>
+			<h1 style="display:inline-block;text-decoration: line-through;">Articles</h1>
+			<h1 style="display:inline-block;">Ramblings<h1>
+			<a href="https://projecteuler.net/problem=51" target="_blank">
+				<h2 class="round navigation" style="display:inline-block;">Project Euler Problem 51</h2>
+			</a>
+			<h3 style="display:inline-block">3/1/2018</h3>
 			<!--<p class="round">ProjectEuler.net has, to date, 610 increasingly difficult problems that require programming and math to solve.  All of the early problems had solutions that were obvious to me, and the struggle was entirely with the implementation.  Problem 51 was the first one that I couldn't immediately start coding, and I actually had to pause and think for a few minutes about the best way to solve it.  That's the reason why I found it to be interesting enough to talk about, and this is the process of how I went about solving it.
 			</p>-->
 			<div class = "text">
@@ -29,7 +35,9 @@
 			<p>One of the reason's I wanted to write something about this problem is that I had to consider 3 reasonable ways to implement a solution and the problem had just enough complexity that stopping to think about it was more prudent than jumping immediately into the code.
 			</p>
 			<li>Solution #1) Iterate through all numbers, check if prime, calculate size of all families containing the prime until a size 8 is found.  This method is the most obvious and likely the easiest to code, it will do lots of redundant prime checks, and it will use some tricky logic to generate families from the primes.</li>
+			<br>
 			<li>Solution #2) Generate primes under 1 million, increment a count for families they correspond to, search families in numerical order until a size 8 is found.  This method will genearte all the primes at once which is faster than doing so seperately, it does no redundant primes checks, it will use a very large and sparse array with dimensions 11 x 11 x 11 x 11 x 11 x 11, it will also use tricky logic to generate families from the primes, and it will perform lots of prime checks on numbers above our solution.</li>
+			<br>
 			<li>Solution #3) Generate all prime families in numerical order, and stop when a size 8 is found.  This method will still perform redundant prime checks, but avoids the tricky logic of generating families from a prime.</li>
 			<p>The last thing I realized was that any family with 8 primes must have at least three wildcards '*' in it.  This follows from the fact that you can tell if a number is divisible by 3 if the sum of it's digits is divisible by three.  Therefore, if you have one wildcard '*' in your family then you can only have a maximum of 6 or 7 primes in it since any 10 consecutive numbers must have either 3 or 4 multiples of three.  This same logic holds true for any number of wildcards '*' that isn't a multiple of 3.  Therefore, we can skip over any families that has less than 3 wildcards '*', and algorithms that calculate the families first can best take advantage of this.  Solutions 1 and 2 both generate the prime numbers first and families second, but Solution 3 generates families first and prime numbers second which was my main deciding factor in using it.</p>
 		</div>
@@ -39,5 +47,32 @@
 		<div class = "round">
 			<img src="img/projectEuler_051.bmp" width="100%" style="margin:0;border:0;padding:0;">
 		</div>
+	</div>
+	<div>
+		<h2 class="round" style="display:inline-block">Results</h2>
+		<div class="text">
+			<p>On line 23 I only checked that the family contained a single wildcard '*' rather than 3 of them.  I timed how long it took to find the answer, and you can see that it required almost 40 seconds.  However, because we determined that the answer must have a minimum of 3 wildcards '*', we can change the constraint on line 23 and the program finds the solution in on .6 seconds.</p>
+		</div>
+	</div>
+	<div>
+		<h2 class="round" style="display:inline-block">Conclusions</h2>
+		<div class="text">
+			<p>Being the masochist that I am, this is my favorite part.  The part where I get to brutally critisize my choices throughout this problem.</p>
+			<ol>
+				<li>The most obvious problem with my code was the it found the smallest family rather than the smallest prime.  In this case (and in most cases) it would usually generate the right answer, but it was definitely a big mistake in the planning phase.</li>
+				<br>
+				<li>The outermost while loop on line 18 only checks to see if we've found a solution after iterating through all possible families a given length.  This causes a lot of pointless processing after the answer has been found.  We could have checked to see if we've found our answer and exit the program sooner or keep checking for a smaller prime in case we found the wrong answer as mentioned in the previous item.  Instead, I got the worst of both worlds.  It wasn't efficient, and it wasn't 100% accurate.</li>
+				<br>
+				<li>On line 32, we checked the size of the current family against our maximum so far.  This logic only makes sense if we want to find the smallest family of all sizes.  Since we only care about size 8, we should have used a variable for the threshhold rather than the maximum.  After confirming that the family has at least 8 primes, we then check to see if the smallest prime in the current family is smaller than our previously smallest prime.</li>
+				<br>
+				<li>For the reasons listed above, I think it's safe to say that I should have chosen to use solution #1 rather than #3.  It rules out the possibility for an incorrect answer.  I also overestimated the differences between these solutions in their ability to utilize my deduction that the answer has at least 3 wildcards '*'.  In retrospect, I believe that it would have been cleaner and just as fast.</li>
+			</ol>
+			<p>I fell victim to what poker players refer to as "Fancy Play Syndrome" where people use complicated strategies in situations where a simple one would have been optimal.  The true beauty of Programming and Math is the ability to find simple solutions to otherwise complicated problems.  Beginners can only suggest simple solutions because they don't understand the complicated ones.  As you gain more skills and knowledge, it's tempting to use complex solutions to show your expertise and seperate yourself from beginners.  Part of being good at anything whether it be Poker, Math, or Programming is being able to use a simple solution not because it's the only thing you can do, but because you understand why it's the best way to do it.</p>
+		</div>
+	</div>
+	<div>
+		<a href="#/About/Programming/Rambling2">
+			<h2 class="round navigation" style="display:inline-block;">Next Rambling</h2>
+		</a>
 	</div>
 </div>
