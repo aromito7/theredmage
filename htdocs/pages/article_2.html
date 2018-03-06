@@ -1,0 +1,97 @@
+<div class="left" style="display: inline-block;">
+	<div class="ibl left" style="position: relative; width:20%;">
+			<!--<img src="img/redTriangle.jpg" height="200" width="200" style="position:relative"></img>-->
+			<div id="triangle-topleft"></div>
+			<div style=" height: 200px;width: 200px;background-color: #555;border-radius: 50%;background-color:#600;position:absolute; top:0px; left0px"></div>
+			<img src="img/me2.jpg" height="188" width="188" style="position: absolute; top: 6px; left: 6px;border-radius:50%;">
+	</div>
+</div>
+<div style="margin: 0 50px 0 50px;">
+	<code>
+		def determineHand(self, hand): 
+	        
+	        hasPair, hasTrips, hasQuads, hasStraight, hasWheel, hasFlush, hasStraightFlush = [False]*7
+	        bestHand, flush, high, pairs, trips, quads, straight = [], [], [], [], [], [], []
+	        
+	        temp = self.countSuits(hand)
+	        flushSuit = temp[0]
+	        flushCount = temp[1]
+	        delta = [None] * (len(hand))
+	        pairCount = 1
+	        straightCount = 0
+	        
+	        if flushCount >= 5:
+	            hasFlush = True
+	            for card in hand:
+	                if card.suit == flushSuit:
+	                    flush.append(card)
+	        
+	        #Adding a buffer to the end of the hand so I can check card rank differences and for the wheel
+	        hand.append(hand[0])
+	        
+	        for x in range(len(hand)-1):
+	            delta[x]= hand[x].value - hand[x+1].value
+	            if delta[x] == 0:
+	                pairCount+=1
+	            else:
+	                if pairCount > 1:
+	                    if pairCount == 2: 
+	                        pairs.extend(hand[x-1: x+1])
+	                        hasPair = True
+	                    if pairCount == 3: 
+	                        trips.extend(hand[x-2: x+1])
+	                        hasTrips = True
+	                    if pairCount == 4: 
+	                        quads.extend(hand[x-3:x+1])
+	                        hasQuads = True
+	                    pairCount = 1
+	                if (delta[x] % 13) == 1:
+	                    straightCount += 1
+	                    if straightCount == 4: 
+	                        straightEnd = hand[x+1]
+	                        hasStraight = True 
+	                        if straightEnd.value == 14: 
+	                            hasWheel == True
+	                else: straightCount = 0   
+	                    
+	        #self.printOutput(delta[:-1])
+	        if hasFlush and hasStraight:
+	            flush.append(flush[0])
+	            straightFlushCount = 1
+	            for x in range(len(flush)-1):
+	                if (flush[x].value - flush[x+1].value) % 13 == 1:
+	                    straightFlushCount += 1
+	                    if straightFlushCount == 5:
+	                        bestHand = flush[x-3:x+2]
+	                        hasStraightFlush = True
+	                else:
+	                    straightFlushCount = 1
+	                #if x == len(flush)-2:
+
+	        if hasStraightFlush: bestHand = [1, bestHand]
+	        elif hasQuads: bestHand = [2, quads + sorted(list((set(hand) - set(quads))), reverse=True)[:1]]
+	        elif hasTrips and hasPair: bestHand = [3, trips[:3] + pairs[:2]]
+	        elif len(trips) > 3: bestHand = [3, trips[:5]]
+	        elif hasFlush: bestHand = [4, flush[:5]]
+	        elif hasStraight:
+	            bestHand = []
+	            endValue = straightEnd.value
+	            if endValue == 14: 
+	                hasWheel = True
+	                endValue = 1
+	            for x in range(4, -1, -1):
+	                for card in hand:
+	                    if card.value == endValue + x:
+	                        bestHand.append(card)
+	                        break
+	            if hasWheel: bestHand.append(hand[0])
+	            bestHand = [5, bestHand]
+	        elif hasTrips: bestHand = [6, trips[:3] + sorted(list((set(hand) - set(trips))), reverse=True)[:2]]
+	        elif hasPair and len(pairs) > 2: bestHand = [7, pairs[:4] + sorted(list((set(hand) - set(pairs))), reverse=True)[:1]]
+	        elif hasPair: bestHand = [8, pairs[:2] + sorted(list((set(hand) - set(pairs))), reverse=True)[:3]]
+	        else:
+	            bestHand = [9, hand[:5]]
+	        return bestHand
+    
+	</code>
+</div>

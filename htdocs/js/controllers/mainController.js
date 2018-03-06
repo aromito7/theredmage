@@ -16,6 +16,14 @@ app.controller('mainController', ['$scope', function($scope) {
         link: '/#/Red'
     }
     ];
+
+    $scope.ramblings = [
+    {
+        link: '/#/About/Programming/ProjectEuler'
+    },
+    {
+        link: '/#/About/Programming/PokerHands'
+    }];
     
     $scope.interests = [
     {
