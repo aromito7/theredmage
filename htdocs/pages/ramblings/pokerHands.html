@@ -1,10 +1,67 @@
 <div class="grid-container">
-    <div class="item6" style="background-color:#600;">
-    	<img src="img/me2.jpg" width="100%" style="border-radius:50%;background-color:#600;">
+    <div class="item6">
+    	<img src="img/me2.jpg" width="139px" style="border-radius:50%;">
     </div>
-    <div class="item1">Header</div>
+    <div class="item1"><h1>Determining Poker Hands in Java</h1></div>
     <div class="item2">Left</div>
-    <div class="item3">Main</div>
+    <div class="item3">
+        <a href="https://projecteuler.net/problem=54" target="_blank"><h2 class="round navigation" style="display:inline-block;">Project Euler Problem 53</h2></a>
+        <p>(3/8/2018)</p>
+        <p>I'm going to tackle another problem from ProjectEuler.net, and I promise the next one will be something different.  While python is excellent for solving mathematical problems, this one is all logic and very little math so I'm going to use Java for variety.</p>
+        <p>Each line of data we're given represents one hand of poker containing 10 strings of length 2.  The first 5 and last 5 strings represent the first and second players hands respectively, and each string is comprised of a rank and a suit.  Our goal is to determine how many hands player 1 wins out of our data.</p>
+        <a onclick="window.open('img/problem54/p054_poker.txt', '_blank');"><h2 class="round navigation link" style="display:inline-block;">Raw hand data</h2></a>
+        <br>
+        <h3>To do this I plan to:</h3>
+        <ol>
+            <li>Open 'poker.txt' using Java's File Reader library.</li>
+            <li>Split the input into an array of shape [hands = x][players = 2][cards = 5]</li>
+            <li>Convert face card ranks to numbers: A=14, K=13, Q=12, J=11, T=10</li>
+            <li>Sort cards in descending order by rank: [rank0 > rank1 > rank2 > rank3 > rank4]</li>
+            <li>Generate differential array: [rank0-rank1, rank1-rank2, rank2-rank3, rank3-rank4]</li>
+            <li>Check for a flush if all 5 cards in a hand have the same suit.</li>
+            <li>Determine straights, 4 of a kind, 3 of a kind, and pairs using differential array.</li>
+            <li>Make final hand determination and use highest cards as tiebreakers.</li>
+            <li>Increment count if Player 1 wins.</li>
+        </ol>
+        <br>
+        <h2>Lets see how each of these steps actually turned out when I coded it.  Disclaimer - This will be the first java code that I've written in over a year.</h2>
+        <ol>
+            <li>
+                <h3>Open 'poker.txt' using Java's File Reader library.</h3>
+                <img src="img/problem54/code1.bmp" width="100%">
+            </li>
+            <li>
+                <h3>Split the input into an array of shape [hands = x][players = 2][cards = 5]</h3>
+            </li>
+            <li>
+                <h3>Convert face card ranks to numbers: A=14, K=13, Q=12, J=11, T=10</h3>
+                <img src="img/problem54/code2.bmp" width="100%">
+            </li>
+            <li>
+                <h3>Sort cards in descending order by rank: [rank0 > rank1 > rank2 > rank3 > rank4]</h3>
+                <img src="img/problem54/code4.bmp" width="100%">
+            </li>
+            <li>
+                <h3>Generate differential array: [rank0-rank1, rank1-rank2, rank2-rank3, rank3-rank4]</h3>
+            </li>
+            <li>
+                <h3>Check for a flush if all 5 cards in a hand have the same suit.</h3>
+                <img src="img/problem54/code5.bmp" width="100%">
+            </li>
+            <li>
+                <h3>Determine straights, 4 of a kind, 3 of a kind, and pairs using differential array.</h3>
+                <img src="img/problem54/code5.bmp" width="100%">
+            </li>
+            <li>
+                <h3>Make final hand determination and use highest cards as tiebreakers.</h3>
+                <img src="img/problem54/code8a.bmp" width="100%">
+                <p>This map takes an input of our hand differentials and outputs the final ordering of cards in our hand.  Our cards are in descending order because of a previous step, but in poker, the tiebreaker is determinied by the part of the hand which gives it it's highest value.  For example, a full house containing 3 Kings and 2 Jacks is better than a hand of 3 Queens and 2 Aces even though the highest card in the first hand (a king) is lower than the highest card in the second hand (an ace).  The determining factor is how good the 3 of a kind is.</p>
+                <p>Take the code on line 20.  If the input is {1,1,0,0} that means that there is a gap between the first and second cards, a gap between the second and third cards, but no gap between the third, fourth, and fifth cards.  This represents a hand that has 3 of a kind, where the other two cards are higher than the set of 3 such as Ace, King, Jack, Jack, Jack.  By mapping it to our int[] list of {2,3,4,0,1} we are saying that the hand should be permuted to Jack, Jack, Jack, Ace, King.  That way we can iterate through the ranks of cards in this hand to determine which hand wins any tiebreakers at the end.</p>
+                <img src="img/problem54/code8b.bmp" width="100%">
+                <p>We lastly add the rank of each card in our hand to our playerResults list according to the proper permutation from the previous code.  We end up with a string of 11 numbers where the first number represents the strength of the final hand, and the remaining 10 represent the ranks of cards in the hand.  By setting up all our hand data like this we can simply compare the strings to determine which player wins the hand.  There's a math term known as elegance that applies here.  We could have solved this problem by checking to see if either player had a straight flush, then check if either player had 4 of a kind, and keep going until one does and we have a winner, or both do and we start checking tiebreakers.  Instead, we put some forethought and a lot of effort into transforming our data using the right structures, and then let our data do the heavy lifting at the end by doing a simple comparison of which string of numbers is larger.  Simply put, I felt like this was a beautiful solution (even if it was VERY rough around the edges from me being rusty with Java).</p>
+            </li>
+        </ol>
+    </div>
     <div class="item4">Right</div>
     <div class="item5">Footer</div>
 </div>

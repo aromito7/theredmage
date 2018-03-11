@@ -2,7 +2,7 @@ var app = angular.module('app', ['ngRoute']);
 app.config(function($routeProvider){
 	$routeProvider
 		.when('/',{
-			templateUrl: 'pages/home.html',
+            templateUrl: 'pages/home.html',
 			controller: 'mainController'
 		})
 		.when('/TopSevens',{
@@ -12,15 +12,7 @@ app.config(function($routeProvider){
 		.when('/About',{
 			templateUrl: 'pages/about.html',
 			controller: 'mainController'
-		})
-        .when('/Red',{
-            templateUrl: 'pages/todo.html',  //pages/red.html
-            controller: 'mainController'
-        })        
-        .when('/Professional',{
-            templateUrl: 'pages/profesional.html',
-            controller: 'mainController'
-        })
+		})       
         .when('/TopSevens/Movies',{
             templateUrl: 'pages/topSevens/movies.html',
             controller: 'mainController'
@@ -41,6 +33,10 @@ app.config(function($routeProvider){
             templateUrl: 'pages/todo.html',
             controller: 'mainController'
         })        
+        .when('/Programming',{
+            templateUrl: 'pages/programming.html',
+            controller: 'mainController'
+        })
         .when('/About/Programming',{
             templateUrl: 'pages/programming.html',
             controller: 'mainController'

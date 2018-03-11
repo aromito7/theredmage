@@ -29,22 +29,22 @@ app.controller('mainController', ['$scope', function($scope) {
     {
         icon: 'img/math.jpg',
         title: 'Mathematics',
-        link: '/#/About/Math',
+        link: '/#/Math',
     },
     {
         icon: 'img/code.jpg',
         title: 'Programming',
-        link: '/#/About/Programming',
+        link: '/#/Programming',
     },
     {
         icon: 'img/poker.png',
         title: 'Poker',
-        link: '/#/About/Poker'
+        link: '/#/Poker'
     },
     {
         icon: 'img/running.jpg',
         title: 'Running',
-        link: '/#/About/Running'
+        link: '/#/Running'
     }
     ]
 
