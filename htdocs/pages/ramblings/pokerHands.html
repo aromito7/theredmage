@@ -1,10 +1,10 @@
 <div class="grid-container">
-    <div class="item6">
+    <div class="me">
     	<img src="img/me2.jpg" width="139px" style="border-radius:50%;">
     </div>
-    <div class="item1"><h1>Determining Poker Hands in Java</h1></div>
-    <div class="item2">Left</div>
-    <div class="item3">
+    <div class="top"><h1>Determining Poker Hands</h1></div>
+    <div class="left"></div>
+    <div class="main">
         <a href="https://projecteuler.net/problem=54" target="_blank"><h2 class="round navigation" style="display:inline-block;">Project Euler Problem 53</h2></a>
         <p>(3/8/2018)</p>
         <p>I'm going to tackle another problem from ProjectEuler.net, and I promise the next one will be something different.  While python is excellent for solving mathematical problems, this one is all logic and very little math so I'm going to use Java for variety.</p>
@@ -58,12 +58,16 @@
                 <p>This map takes an input of our hand differentials and outputs the final ordering of cards in our hand.  Our cards are in descending order because of a previous step, but in poker, the tiebreaker is determinied by the part of the hand which gives it it's highest value.  For example, a full house containing 3 Kings and 2 Jacks is better than a hand of 3 Queens and 2 Aces even though the highest card in the first hand (a king) is lower than the highest card in the second hand (an ace).  The determining factor is how good the 3 of a kind is.</p>
                 <p>Take the code on line 20.  If the input is {1,1,0,0} that means that there is a gap between the first and second cards, a gap between the second and third cards, but no gap between the third, fourth, and fifth cards.  This represents a hand that has 3 of a kind, where the other two cards are higher than the set of 3 such as Ace, King, Jack, Jack, Jack.  By mapping it to our int[] list of {2,3,4,0,1} we are saying that the hand should be permuted to Jack, Jack, Jack, Ace, King.  That way we can iterate through the ranks of cards in this hand to determine which hand wins any tiebreakers at the end.</p>
                 <img src="img/problem54/code8b.bmp" width="100%">
-                <p>We lastly add the rank of each card in our hand to our playerResults list according to the proper permutation from the previous code.  We end up with a string of 11 numbers where the first number represents the strength of the final hand, and the remaining 10 represent the ranks of cards in the hand.  By setting up all our hand data like this we can simply compare the strings to determine which player wins the hand.  There's a math term known as elegance that applies here.  We could have solved this problem by checking to see if either player had a straight flush, then check if either player had 4 of a kind, and keep going until one does and we have a winner, or both do and we start checking tiebreakers.  Instead, we put some forethought and a lot of effort into transforming our data using the right structures, and then let our data do the heavy lifting at the end by doing a simple comparison of which string of numbers is larger.  Simply put, I felt like this was a beautiful solution (even if it was VERY rough around the edges from me being rusty with Java).</p>
+                <p>We lastly add the rank of each card in our hand to our playerResults list according to the proper permutation from the previous code.  We end up with a string of 11 numbers where the first number represents the strength of the final hand, and the remaining 10 represent the ranks of cards in the hand.  By setting up all our hand data like this we can simply compare the strings to determine which player wins the hand.</p>  
+                <img src="img/problem54/result.bmp" width="100%">
+                <p>This is the output that my code generates for each hand.  It shows each players hand ordered by card rank, the poker hand result, and the final 11 digit number that represents their hand.  A straight flush is a 9 while only having a high card is a 1.  As you can see from this example, three of a kind (or trips) is a 4 and a straight is a 5.  The remaining 10 digits are the ranks of card in hand by their importance.  As you can see the cards in a straight are already ordered, but the hand with 3 of a kind uses it's three 2s as it's most important tie breakers.  Of course, since a straight always beats a 3 of a kind, we don't need to use any tiebreakers since the number starting with a 5 is always larger than the number starting with a 4.</p>
             </li>
         </ol>
+        <h2>Conclusion</h2>
+        <p>There's a math term known as elegance that applies here.  We could have solved this problem by checking to see if either player had a straight flush, then check if either player had 4 of a kind, and keep going until one does and we have a winner, or both do and we start checking tiebreakers.  Instead, we put some forethought and a lot of effort into transforming our data into it's most useful form, and then let our data do the heavy lifting at the end by doing a simple comparison of which string of numbers is larger.  Simply put, I felt like this was an elegenat solution to the problem (even if it was VERY rough around the edges from me being rusty with Java).</p>
     </div>
-    <div class="item4">Right</div>
-    <div class="item5">Footer</div>
+    <div class="right"></div>
+    <div class="footer"></div>
 </div>
 <!--
 <div class="item3" style="margin: 0 50px 0 50px;">
